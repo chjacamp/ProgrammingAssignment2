@@ -28,5 +28,17 @@ makeCacheMatrix <- function(x = matrix()) {
 ## passes the argument to setinvmatrix (to cache the solution).
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+  m <- x$getinvmatrix() 
+  ##is there a invmatrix already stored?
+  if(!is.null(m)) { 
+    message("Getting Inverse Matrix. Warning: Inverse matrix may have been 
+            calculated in cacheSolve, or it was created by the function
+            setinvmatrix() and no calculation was done.")
+    return(m)
+  }
+  ## Return a matrix that is the inverse of 'x'
+  data <- x$get()
+  m <- solve(data, ...)
+  x$setinvmatrix(m)
+  m
 }
