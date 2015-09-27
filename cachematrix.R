@@ -23,7 +23,9 @@ makeCacheMatrix <- function(x = matrix()) {
 
 
 
-## Write a short comment describing this function
+## CacheSolve either 1) Returns the cached inverse matrix set by setinvmatrix
+## or (else) 2) calculates the inverse matrix with a solve function and 
+## passes the argument to setinvmatrix (to cache the solution).
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
