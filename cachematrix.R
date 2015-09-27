@@ -8,9 +8,19 @@
 ##  retrieve this matrix from cache.
 ## 'getinvmatrix' retrieves the matrix cached by setinvmatrix.
 
-makeCacheMatrix <- function(x = matrix()) {
 
+makeCacheMatrix <- function(x = matrix()) {
+    m <- NULL
+    set <- function(y) {
+      x <<- y
+      m <<- NULL
+    }
+    get = function () x
+    setinvmatrix <- function(solve) m <<- solve
+    getinvmatrix <- function() m
+    list(set=set, getinvmatrix=getinvmatrix, setinvmatrix=setinvmatrix, get=get)  
 }
+
 
 
 ## Write a short comment describing this function
